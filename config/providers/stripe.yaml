@@ -1,0 +1,10 @@
+# Provider facts for Stripe (AGENTS.md Section 6.5).
+# Kept here, not hardcoded in node code, so a future generalization to other
+# providers is a data change - not a code change. This is a single-provider
+# MVP per AGENTS.md Section 3, rule 1; do not add a second provider file or a
+# provider-selection abstraction on top of this.
+
+name: stripe
+spec_url: https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json
+changelog_url: https://stripe.com/docs/changelog
+target_repo: demo_repo

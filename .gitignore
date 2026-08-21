@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+.env
+data/
+*.egg-info/
+.DS_Store
+
+# demo_repo/ must be its own git repo for the Verifier's `git worktree`
+# sandboxing to work (AGENTS.md Section 7), but that .git is deliberately
+# not committed here - see devsetup.py. It's created on demand locally by
+# conftest.py / graph.py, so ignore it rather than embed a nested repo.
+demo_repo/.git/

@@ -1,0 +1,11 @@
+# Role -> model id. Read by llm/client.py::get_chat_model(role).
+#
+# This is a lookup table, not a router: each agent role always uses the model
+# configured here. A future model router (picking a model per-invocation
+# based on task difficulty) would read/write this file's shape but is out of
+# scope for this MVP - see AGENTS.md chat history for that discussion. Keep
+# this file as the single seam where that would plug in later.
+
+planner: claude-3-5-haiku-latest
+coder: claude-3-5-sonnet-latest
+critic: claude-3-5-haiku-latest
