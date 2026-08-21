@@ -1,0 +1,7 @@
+# demo_repo's own dependencies, documented for clarity. The Verifier
+# (verifier/sandbox.py) runs pytest against a git-worktree copy of this
+# directory using the ambient Python environment - see verifier/README.md -
+# so these must already be installed there (top-level requirements.txt
+# includes both).
+stripe==11.4.1
+pytest==8.3.4

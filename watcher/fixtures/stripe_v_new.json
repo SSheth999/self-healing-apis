@@ -1,0 +1,77 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Stripe API (fixture)",
+    "version": "2025-06-30"
+  },
+  "paths": {
+    "/v1/charges": {
+      "post": {
+        "operationId": "PostCharges",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": ["amount", "currency"],
+                "properties": {
+                  "amount": {"type": "integer", "description": "Amount to charge, in cents."},
+                  "currency": {"type": "string", "description": "Three-letter ISO currency code."},
+                  "payment_method": {
+                    "type": "string",
+                    "description": "A payment method to be charged.",
+                    "x-renamed-from": "source"
+                  },
+                  "customer": {"type": "string", "description": "ID of an existing customer."},
+                  "description": {"type": "string", "description": "An arbitrary string attached to the charge."}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/refunds": {
+      "post": {
+        "operationId": "PostRefunds",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": ["charge", "reason"],
+                "properties": {
+                  "charge": {"type": "string", "description": "The identifier of the charge to refund."},
+                  "amount": {"type": "integer", "description": "Amount to refund, in cents."},
+                  "reason": {"type": "string", "description": "Reason for the refund. Now required for compliance logging."}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/payment_methods/{payment_method}/attach": {
+      "post": {
+        "operationId": "PostPaymentMethodAttach",
+        "x-moved-from": "/v1/customers/{customer}/sources",
+        "parameters": [
+          {"name": "payment_method", "in": "path", "required": true, "schema": {"type": "string"}}
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": ["customer"],
+                "properties": {
+                  "customer": {"type": "string", "description": "The customer to attach the payment method to."}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
